@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="post">
+        <label for="chave">Chave Pix</label>
+        <br>
+        <input type="text" name="chave"
+               placeholder="Chave pix que deseja fazer a transferência"
+               value="{{ request.form['chave'] }}"></input>
+        <br>
+
+        <label for="valor">Valor</label>
+        <br>
+        <input type="float" name="valor"
+               placeholder="Valor da transferência"
+               value="{{ request.form['valor'] }}"></input>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+{% endblock %}
