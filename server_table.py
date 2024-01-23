@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
+from carteira import add_pix, devolucao
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
@@ -45,6 +46,8 @@ def pix():
     if request.method == 'POST':
         chave = request.form['chave']
         valor = request.form['valor']
+        valor = int(valor)
+        add_pix(valor)
         return ("PIX enviado!")
     elif request.method == 'GET':
         return render_template('pix.html', title='bank-app')
